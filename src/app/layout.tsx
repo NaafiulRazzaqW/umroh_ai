@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <Navbar position="static" className="bg-white drop-shadow-md">
+      <NavbarBrand>
+        <p className="font-bold">Umroh.ai</p>
+      </NavbarBrand>
+      <NavbarContent className="hidden sm:flex gap-8" justify="center">
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Paket Umroh
+          </Link>
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
+          <Link href="#" className="text-black">Masuk</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Button as={Link} className="bg-green-400" href="#" variant="flat">
+            <p className="text-white">Daftar</p>
+          </Button>
+        </NavbarItem>
+      </NavbarContent>
+    </Navbar>
+        
+        {children}</body>
     </html>
   );
 }
